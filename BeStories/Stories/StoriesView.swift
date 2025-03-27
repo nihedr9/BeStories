@@ -14,8 +14,10 @@ struct StoriesView: View {
   
   let viewModel: StoriesViewModelProtocol
   
+  @State private var router = Router()
+  
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $router.paths) {
       VStack {
         switch viewModel.state {
         case .loading:
@@ -27,7 +29,11 @@ struct StoriesView: View {
           StoriesListView(
             stories: stories,
             hasMoreStories: viewModel.hasMoreStories,
-            action: { await viewModel.loadMoreStories() })
+            action: { story, namespace in
+              router.presentedSheet = .storyDetails(story: story, namespace: namespace)
+              viewModel.updateHasBeenSeen(story: story, hasBeenSeen: true)
+            },
+            loadMore: { await viewModel.loadMoreStories() })
           .padding(8)
         case .idle:
           Color.clear
@@ -46,6 +52,13 @@ struct StoriesView: View {
       }
       .task {
         await viewModel.fetchStories()
+      }
+      .sheet(item: $router.presentedSheet) { destination in
+        switch destination {
+        case .storyDetails(let story, let namespace):
+          StoryDetailsView()
+            .navigationTransition(.zoom(sourceID: story.id, in: namespace))
+        }
       }
     }
   }

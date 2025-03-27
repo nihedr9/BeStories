@@ -13,15 +13,19 @@ struct StoriesListView: View {
   
   let stories: [Story]
   let hasMoreStories: Bool
-  let action: () async -> Void
+  let action: (Story, Namespace.ID) -> Void
+  let loadMore: () async -> Void
+  
+  @Namespace private var namespace
   
   var body: some View {
     ScrollView(.horizontal) {
       LazyHStack(spacing: 8) {
         ForEach(stories) { story in
-          Button(action: { }) {
+          Button(action: { action(story, namespace) }) {
             
             StoryView(item: .init(from: story))
+              .matchedTransitionSource(id: story.id, in: namespace)
             
             if story == stories.last, hasMoreStories {
               ForEach(Story.placeholders.prefix(2)) { story in
@@ -29,7 +33,7 @@ struct StoriesListView: View {
               }
               .redacted(reason: .placeholder)
               .task {
-                await action()
+                await loadMore()
               }
             }
           }
@@ -43,5 +47,9 @@ struct StoriesListView: View {
 }
 
 #Preview {
-  StoriesListView(stories: Story.placeholders, hasMoreStories: false, action: {})
+  StoriesListView(
+    stories: Story.placeholders,
+    hasMoreStories: false,
+    action: {_,_ in },
+    loadMore: {})
 }

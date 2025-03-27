@@ -62,7 +62,9 @@ final class StoriesViewModel: StoriesViewModelProtocol {
   }
   
   func fetchStories() async {
-    state = .loading
+    if storiesCount == 0 {
+      state = .loading
+    }
     try? await Task.sleep(nanoseconds: 1_000_000_000)
     let users = try! dataService.fetchUsers()
     try! database.save(models: users)
