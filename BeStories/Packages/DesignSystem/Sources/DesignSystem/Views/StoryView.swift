@@ -23,6 +23,7 @@ public struct StoryView: View {
         
         KFImage(.init(string: item.avatar))
           .resizable()
+          .fade(duration: 0.2)
           .placeholder { Color.gray }
           .scaledToFill()
           .frame(width: 80, height: 80)

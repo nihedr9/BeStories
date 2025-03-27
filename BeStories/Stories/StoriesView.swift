@@ -8,12 +8,14 @@
 import SwiftUI
 import Network
 import Model
+import Database
 import DesignSystem
 
 struct StoriesView: View {
   
   let viewModel: StoriesViewModelProtocol
   
+  @Environment(\.modelContext) private var modelContext
   @State private var router = Router()
   
   var body: some View {
@@ -21,10 +23,12 @@ struct StoriesView: View {
       VStack {
         switch viewModel.state {
         case .loading:
-          loadingView
+          StoriesLoadingView()
         case .failed(let error):
-          // TODO: implement error views
-          Text("Error: \(error)")
+          ContentUnavailableView(
+            error.title,
+            systemImage: "xmark.circle"
+          )
         case .loaded(let stories):
           StoriesListView(
             stories: stories,
@@ -56,23 +60,10 @@ struct StoriesView: View {
       .sheet(item: $router.presentedSheet) { destination in
         switch destination {
         case .storyDetails(let story, let namespace):
-          StoryDetailsView()
+          StoryDetailsView(viewModel: .init(story: story, database: Database(container: modelContext.container)))
             .navigationTransition(.zoom(sourceID: story.id, in: namespace))
         }
       }
-    }
-  }
-  
-  private var loadingView: some View {
-    ScrollView(.horizontal) {
-      LazyHStack(spacing: 8) {
-        ForEach(Story.placeholders) { story in
-          StoryView(item: .init(from: story))
-        }
-        .redacted(reason: .placeholder)
-      }
-      .fixedSize()
-      .padding(8)
     }
   }
 }

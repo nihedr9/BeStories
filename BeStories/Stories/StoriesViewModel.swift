@@ -19,7 +19,7 @@ enum ViewState<T: Identifiable>: Identifiable, Equatable {
   
   case idle
   case loading
-  case failed(Error)
+  case failed(SroriesError)
   case loaded([T])
   
   var id: String {
@@ -33,6 +33,14 @@ enum ViewState<T: Identifiable>: Identifiable, Equatable {
     case .failed:
       "error"
     }
+  }
+}
+
+enum SroriesError: Error {
+  case noData
+  
+  var title: String {
+    "No data"
   }
 }
 
@@ -64,23 +72,31 @@ final class StoriesViewModel: StoriesViewModelProtocol {
   func fetchStories() async {
     if storiesCount == 0 {
       state = .loading
+      try? await Task.sleep(nanoseconds: 1_500_000_000)
     }
-    try? await Task.sleep(nanoseconds: 1_000_000_000)
-    let users = try! dataService.fetchUsers()
-    try! database.save(models: users)
-    currentLimit += pageSize
-    let stories = try! await getStories(limit: currentLimit)
-    state = .loaded(stories)
+    do {
+      let users = try dataService.fetchUsers()
+      try database.save(models: users)
+      currentLimit += pageSize
+      let stories = try await getStories(limit: currentLimit)
+      state = .loaded(stories)
+    } catch {
+      state = .failed(SroriesError.noData)
+    }
   }
   
   func loadMoreStories() async {
     guard hasMoreStories else {
       return
     }
-    try? await Task.sleep(nanoseconds: 1_000_000_000)
-    currentLimit += pageSize
-    let stories = try! await getStories(limit: currentLimit)
-    state = .loaded(stories)
+    do {
+      try await Task.sleep(nanoseconds: 1_000_000_000)
+      currentLimit += pageSize
+      let stories = try await getStories(limit: currentLimit)
+      state = .loaded(stories)
+    } catch {
+      // TODO: implement an error alert toast
+    }
   }
   
   internal func getStories(limit: Int) async throws -> [Story] {
@@ -91,7 +107,11 @@ final class StoriesViewModel: StoriesViewModelProtocol {
   }
   
   func updateHasBeenSeen(story: Story, hasBeenSeen: Bool) {
-    try! database.updateHasBeenSeen(story: story, hasBeenSeen: hasBeenSeen)
+    do {
+      try database.updateHasBeenSeen(story: story, hasBeenSeen: hasBeenSeen)
+    } catch {
+      // TODO: implement an error alert toast
+    }
   }
 }
 
