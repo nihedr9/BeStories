@@ -90,9 +90,11 @@ final class StoriesViewModel: StoriesViewModelProtocol {
       return
     }
     do {
-      try await Task.sleep(nanoseconds: 1_000_000_000)
+      let users = try dataService.fetchUsers()
+      try database.save(models: users)
       currentLimit += pageSize
       let stories = try await getStories(limit: currentLimit)
+      try await Task.sleep(nanoseconds: 1_000_000_000)
       state = .loaded(stories)
     } catch {
       // TODO: implement an error alert toast

@@ -22,6 +22,7 @@ The project implements the **MVVM (Model-View-ViewModel)** architecture followin
 
 ### better SwifData stack
 - implement a more robust solution to handle versions and migrations
+- handle background inserts
 
 ### Stories Navigation
 - implement better solution to navigate between stories without going back (Maybe use the new **ScrollTargetBehavior** api)
