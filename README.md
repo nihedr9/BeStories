@@ -14,11 +14,14 @@ The project implements the **MVVM (Model-View-ViewModel)** architecture followin
 - implement a CI/CD solution
 
 ### Better Error management: 
-- implement more sexy error Views and alert toasts
+- implement more explicit error Views and alert toasts
 
 ### Dependency Injection
 - create custom Environment values
 - use a DI library ( [**Factory**](https://github.com/hmlongco/Factory) Maybe ?? why not )
+
+### better SwifData stack
+- implement a more robust solution to handle versions and migrations
 
 ### Stories Navigation
 - implement better solution to navigate between stories without going back (Maybe use the new **ScrollTargetBehavior** api)
@@ -29,7 +32,7 @@ The project implements the **MVVM (Model-View-ViewModel)** architecture followin
 ### Code formatting
 - Maybe add a code linter such as **SwiftLint**
 
-### .xcodeproj Managment
+### .xcodeproj management
 - Maybe use **xcodegen**
 
 
