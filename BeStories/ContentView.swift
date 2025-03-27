@@ -6,12 +6,17 @@
 //
 
 import SwiftUI
+import Network
+import Model
 
 struct ContentView: View {
+    
+  @State var stories: [Story] = []
+  
   var body: some View {
     NavigationStack {
       VStack {
-        StoriesListView()
+        StoriesListView(stories: stories)
           .padding(8)
         
         Spacer()
@@ -26,7 +31,6 @@ struct ContentView: View {
         }
       }
     }
-    
   }
 }
 

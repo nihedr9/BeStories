@@ -6,13 +6,18 @@
 //
 
 import Testing
+import Network
+import Database
+import Model
 @testable import BeStories
+import SwiftData
 
 struct BeStoriesTests {
   
-  @Test func example() async throws {
+  @Test
+  func fetchUsers() async throws {
     let dataService = DataFetcher.shared
-    let users = try dataService.fetchUsers(fileName: "users")
+    let users = try dataService.fetchUsers()
     #expect(users.count > 0)
   }
 }

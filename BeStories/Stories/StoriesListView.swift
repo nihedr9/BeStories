@@ -11,7 +11,7 @@ import Model
 
 struct StoriesListView: View {
   
-  let stories = Story.placeholders
+  let stories: [Story]
   
   var body: some View {
       ScrollView(.horizontal) {
@@ -30,5 +30,5 @@ struct StoriesListView: View {
 }
 
 #Preview {
-  StoriesListView()
+  StoriesListView(stories: Story.placeholders)
 }

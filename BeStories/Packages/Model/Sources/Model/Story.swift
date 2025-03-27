@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import SwiftData
 
+@Model
 public class Story: Identifiable {
     
   public var id: String
@@ -19,7 +21,7 @@ public class Story: Identifiable {
     URL(string: "https://picsum.photos/1920/1080?random=\(id)")
   }
   
-  init(
+  public init(
     id: String,
     user: User,
     isLiked: Bool = false,

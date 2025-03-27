@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60EF351E2D9555F8000E4110 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 60EF351D2D9555F8000E4110 /* Kingfisher */; };
+		60C1E3AB2D95665C00345AD7 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 60C1E3AA2D95665C00345AD7 /* Network */; };
+		60C1E3CC2D95667E00345AD7 /* Database in Frameworks */ = {isa = PBXBuildFile; productRef = 60C1E3CB2D95667E00345AD7 /* Database */; };
 		60EF35262D955BD7000E4110 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 60EF35252D955BD7000E4110 /* DesignSystem */; };
 		60EF354E2D955CA1000E4110 /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = 60EF354D2D955CA1000E4110 /* Model */; };
 /* End PBXBuildFile section */
@@ -58,8 +59,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60C1E3AB2D95665C00345AD7 /* Network in Frameworks */,
+				60C1E3CC2D95667E00345AD7 /* Database in Frameworks */,
 				60EF354E2D955CA1000E4110 /* Model in Frameworks */,
-				60EF351E2D9555F8000E4110 /* Kingfisher in Frameworks */,
 				60EF35262D955BD7000E4110 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -129,9 +131,10 @@
 			);
 			name = BeStories;
 			packageProductDependencies = (
-				60EF351D2D9555F8000E4110 /* Kingfisher */,
 				60EF35252D955BD7000E4110 /* DesignSystem */,
 				60EF354D2D955CA1000E4110 /* Model */,
+				60C1E3AA2D95665C00345AD7 /* Network */,
+				60C1E3CB2D95667E00345AD7 /* Database */,
 			);
 			productName = BeStories;
 			productReference = 60EF34D62D954ECB000E4110 /* BeStories.app */;
@@ -216,7 +219,6 @@
 			mainGroup = 60EF34CD2D954ECB000E4110;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				60EF351C2D9555F8000E4110 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 60EF34D72D954ECB000E4110 /* Products */;
@@ -418,7 +420,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BeStories/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "BeStories/Preview\\ Content BeStories/Packages/Network";
 				DEVELOPMENT_TEAM = 784WPTD3P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -448,7 +450,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"BeStories/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "BeStories/Preview\\ Content BeStories/Packages/Network";
 				DEVELOPMENT_TEAM = 784WPTD3P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -584,22 +586,14 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		60EF351C2D9555F8000E4110 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/onevcat/Kingfisher";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 8.3.1;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
 /* Begin XCSwiftPackageProductDependency section */
-		60EF351D2D9555F8000E4110 /* Kingfisher */ = {
+		60C1E3AA2D95665C00345AD7 /* Network */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 60EF351C2D9555F8000E4110 /* XCRemoteSwiftPackageReference "Kingfisher" */;
-			productName = Kingfisher;
+			productName = Network;
+		};
+		60C1E3CB2D95667E00345AD7 /* Database */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Database;
 		};
 		60EF35252D955BD7000E4110 /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;

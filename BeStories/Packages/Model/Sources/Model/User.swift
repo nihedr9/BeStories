@@ -5,6 +5,9 @@
 //  Created by Nihed Majdoub on 27/03/2025.
 //
 
+import SwiftData
+
+@Model
 public class User: Identifiable {
   
   public var id: String

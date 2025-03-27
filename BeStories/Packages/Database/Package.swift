@@ -4,32 +4,30 @@
 import PackageDescription
 
 let package = Package(
-    name: "DesignSystem",
+    name: "Database",
     platforms: [
       .iOS(.v18),
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
-            name: "DesignSystem",
-            targets: ["DesignSystem"]),
+            name: "Database",
+            targets: ["Database"]),
     ],
     dependencies: [
       .package(name: "Model", path: "../Packages/Model"),
-      .package(url: "https://github.com/onevcat/Kingfisher", from: "8.3.1")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .target(
-          name: "DesignSystem",
-          dependencies: [
-            .product(name: "Model", package: "Model"),
-            .product(name: "Kingfisher", package: "Kingfisher"),
-          ]),
+            name: "Database",
+            dependencies: [
+              .product(name: "Model", package: "Model"),
+            ]),
         .testTarget(
-            name: "DesignSystemTests",
-            dependencies: ["DesignSystem"]
+            name: "DatabaseTests",
+            dependencies: ["Database"]
         ),
     ]
 )

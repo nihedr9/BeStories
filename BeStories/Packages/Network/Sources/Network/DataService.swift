@@ -9,7 +9,7 @@ import Foundation
 import Model
 
 public protocol DataService {
-  func fetchUsers(fileName: String) throws -> [UserModel]
+  func fetchUsers() throws -> [UserModel]
 }
 
 public enum DataServiceError: Error {
@@ -17,15 +17,15 @@ public enum DataServiceError: Error {
   case decodingError
 }
 
-public struct DataFetcher: DataService {
+public struct DataFetcher: DataService, Sendable {
   
-  static let shared = DataFetcher()
+  public static let shared = DataFetcher()
   
   private init() {}
   
-  public func fetchUsers(fileName: String = "users") throws(DataServiceError) ->  [UserModel] {
+  public func fetchUsers() throws(DataServiceError) ->  [UserModel] {
     do {
-      guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+      guard let url = Bundle.main.url(forResource: "users", withExtension: "json") else {
         throw DataServiceError.fileNotFound
       }
       let response: UsersResponse = try readJSON(with: url)
