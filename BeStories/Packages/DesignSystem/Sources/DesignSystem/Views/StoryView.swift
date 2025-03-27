@@ -7,12 +7,17 @@
 
 import SwiftUI
 import Kingfisher
+import Model
 
-struct StoryView: View {
+public struct StoryView: View {
   
   let item: Item
   
-  var body: some View {
+  public init(item: StoryView.Item) {
+    self.item = item
+  }
+  
+  public var body: some View {
     VStack(spacing: 8) {
       ZStack(alignment: .topTrailing) {
         
@@ -48,21 +53,21 @@ struct StoryView: View {
   StoryView(item: .mock)
 }
 
-extension StoryView {
+public extension StoryView {
   struct Item {
     let avatar: String
     let name: String
     let hasBeenSeen: Bool
     let isLiked: Bool
     
-    init(avatar: String, name: String, hasBeenSeen: Bool, isLiked: Bool) {
+    public init(avatar: String, name: String, hasBeenSeen: Bool, isLiked: Bool) {
       self.avatar = avatar
       self.name = name
       self.hasBeenSeen = hasBeenSeen
       self.isLiked = isLiked
     }
     
-    init(from story: Story) {
+    public init(from story: Story) {
       self.init(
         avatar: story.user.avatar,
         name: story.user.name,

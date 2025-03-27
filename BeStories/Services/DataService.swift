@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Model
 
 public protocol DataService {
   func fetchUsers(fileName: String) throws -> [UserModel]

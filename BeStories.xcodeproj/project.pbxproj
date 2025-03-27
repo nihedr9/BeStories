@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		60EF351E2D9555F8000E4110 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 60EF351D2D9555F8000E4110 /* Kingfisher */; };
+		60EF35262D955BD7000E4110 /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = 60EF35252D955BD7000E4110 /* DesignSystem */; };
+		60EF354E2D955CA1000E4110 /* Model in Frameworks */ = {isa = PBXBuildFile; productRef = 60EF354D2D955CA1000E4110 /* Model */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60EF354E2D955CA1000E4110 /* Model in Frameworks */,
 				60EF351E2D9555F8000E4110 /* Kingfisher in Frameworks */,
+				60EF35262D955BD7000E4110 /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,7 @@
 				60EF34D82D954ECB000E4110 /* BeStories */,
 				60EF34E92D954ECC000E4110 /* BeStoriesTests */,
 				60EF34F32D954ECC000E4110 /* BeStoriesUITests */,
+				60EF35242D955BD3000E4110 /* Frameworks */,
 				60EF34D72D954ECB000E4110 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -95,6 +100,13 @@
 				60EF34F02D954ECC000E4110 /* BeStoriesUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		60EF35242D955BD3000E4110 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -118,6 +130,8 @@
 			name = BeStories;
 			packageProductDependencies = (
 				60EF351D2D9555F8000E4110 /* Kingfisher */,
+				60EF35252D955BD7000E4110 /* DesignSystem */,
+				60EF354D2D955CA1000E4110 /* Model */,
 			);
 			productName = BeStories;
 			productReference = 60EF34D62D954ECB000E4110 /* BeStories.app */;
@@ -413,6 +427,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -442,6 +457,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -584,6 +600,14 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 60EF351C2D9555F8000E4110 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		60EF35252D955BD7000E4110 /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+		60EF354D2D955CA1000E4110 /* Model */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Model;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

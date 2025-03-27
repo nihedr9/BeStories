@@ -17,10 +17,10 @@ public struct UserModel: Codable {
   }
 }
 
-struct Page: Codable {
-  let users: [UserModel]
+public struct Page: Codable {
+  public let users: [UserModel]
 }
 
-struct UsersResponse: Codable {
-  let pages: [Page]
+public struct UsersResponse: Codable {
+  public let pages: [Page]
 }
