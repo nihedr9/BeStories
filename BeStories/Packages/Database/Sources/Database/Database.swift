@@ -5,7 +5,7 @@ import SwiftData
 import Model
 
 @MainActor
-protocol DatabaseService {
+public protocol DatabaseService {
   var mainContext: ModelContext { get }
   
   func countStories() -> Int
