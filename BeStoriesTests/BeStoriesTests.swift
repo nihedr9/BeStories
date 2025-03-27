@@ -9,9 +9,10 @@ import Testing
 @testable import BeStories
 
 struct BeStoriesTests {
-
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
-    }
-
+  
+  @Test func example() async throws {
+    let dataService = DataFetcher.shared
+    let users = try dataService.fetchUsers(fileName: "users")
+    #expect(users.count > 0)
+  }
 }
